@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Country.css'
 
 
-const Country = ({ country }) => {
+const Country = ({ country, handleVisitedCountries }) => {
+
 
     const [visited, setVisited] = useState(false);
     const handleVisited = () => {
@@ -12,6 +13,7 @@ const Country = ({ country }) => {
             setVisited(true)
 
         }
+        handleVisitedCountries(country);
     }
     const currencyMap = country.currencies.currencies;
     const currencyName = Object.values(currencyMap).map(item => item.name);
