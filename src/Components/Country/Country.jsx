@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import './Country.css'
 
 
-const Country = ({ country, handleVisitedCountries }) => {
+const Country = ({ country, setVisitedCount, handleVisitedCountries }) => {
 
 
     const [visited, setVisited] = useState(false);
     const handleVisited = () => {
         if (visited) {
             setVisited(false)
+            setVisitedCount(prepCount => prepCount - 1);
+
         } else {
             setVisited(true)
-
+            setVisitedCount(prepCount => prepCount + 1);
+            handleVisitedCountries(country);
         }
-        handleVisitedCountries(country);
     }
     const currencyMap = country.currencies.currencies;
     const currencyName = Object.values(currencyMap).map(item => item.name);
